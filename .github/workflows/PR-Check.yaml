@@ -42,7 +42,7 @@ jobs:
 
       - name: Build WS
         working-directory: ./ktor-sample
-        run: ./gradlew spotlessApply
+        run: ./gradlew build
 
       - name: Qodana Scan
         uses: JetBrains/qodana-action@v2023.3
