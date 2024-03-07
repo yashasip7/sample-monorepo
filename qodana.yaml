@@ -1,0 +1,16 @@
+version: "1.0"
+linter: jetbrains/qodana-jvm-community:2023.3
+profile:
+  path: CustomProfile.xml
+exclude:
+  - name: All
+    paths:
+      - WS/gradlew
+      - WS/gradlew.bat
+      - WS/application/build/reports/
+      - WS/build.gradle.kts
+      - WS/settings.gradle.kts
+      - WS/application/build.gradle.kts
+      - WS/auth/build.gradle.kts
+      - WS/jooq/build.gradle.kts
+fixesStrategy: apply

@@ -1,0 +1,42 @@
+name: PR-Check
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions:
+  contents: write
+  checks: write
+  pull-requests: write
+
+jobs:
+  WS-PR-Check:
+    runs-on: [self-hosted, linux, ARM64]
+    timeout-minutes: 15
+
+    # Ensures that only one job runs at a time. Cancels previous jobs on this PR - ensures CI time is not wasted on out of date commits.
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: true
+
+      - name: Qodana Scan
+        uses: JetBrains/qodana-action@v2023.3
+        with:
+          upload-result: true
+          use-annotations: true
+          pr-mode: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-fixes: branch
+          args: >
+            --source-directory,./ktor-sample,
+            --linter,jetbrains/qodana-jvm-community:2023.3,
+            --fail-threshold,0,
+            --clear-cache,
+            --property,org.gradle.jvmargs=-Xms3g -Xmx3g,
+            --property,kotlin.daemon.jvmargs=-Xms3g -Xmx3g
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
