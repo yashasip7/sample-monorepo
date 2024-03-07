@@ -2,6 +2,7 @@ version: "1.0"
 linter: jetbrains/qodana-jvm-community:2023.3
 profile:
   path: CustomProfile.xml
+bootstrap: cd WS && ./gradlew build
 exclude:
   - name: All
     paths:
