@@ -54,6 +54,7 @@ jobs:
           push-fixes: branch
           args: >
             --source-directory,./ktor-sample,
+            -p,SuryaDigital.xml,
             --linter,jetbrains/qodana-jvm-community:2023.3,
             --fail-threshold,0,
             --clear-cache,
