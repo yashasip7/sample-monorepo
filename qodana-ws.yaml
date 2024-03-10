@@ -1,7 +1,8 @@
 version: "1.0"
 linter: jetbrains/qodana-jvm-community:2023.3
 bootstrap: cp qodana-ws.yaml qodana.yaml
-baseProfile: CustomProfile.xml
+profile:
+  path: CustomProfile.xml
 exclude:
   - name: All
     paths:
