@@ -1,6 +1,7 @@
 # Idea
 .idea/*
 !.idea/inspectionProfiles
+!.idea/gradle.xml
 
 artifactory.properties
 
