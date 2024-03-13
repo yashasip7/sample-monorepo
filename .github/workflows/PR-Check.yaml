@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   WS-PR-Check:
-    runs-on: [self-hosted, linux, ARM64]
+    runs-on: ubuntu-latest
     timeout-minutes: 15
 
     # Ensures that only one job runs at a time. Cancels previous jobs on this PR - ensures CI time is not wasted on out of date commits.
